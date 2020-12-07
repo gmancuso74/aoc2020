@@ -16,8 +16,8 @@ public class App {
 
 	public static void main(String[] args) throws IOException {
 		App app = new App();
-		app.Day1();
-		app.Day2();
+		app.part1();
+		app.part2();
 	}
 
 	public List<Integer> load(String string) throws IOException {
@@ -54,7 +54,7 @@ public class App {
 		return null;
 	}
 
-	public void Day1() throws IOException {
+	public void part1() throws IOException {
 		System.out.println("Day1 starting at " + Instant.now().toString());
 		App app = new App();
 		List<Integer> input = app.load("input");
@@ -64,7 +64,7 @@ public class App {
 		System.out.println("Result: " + mult(match) + " at " + Instant.now().toString());
 	}
 
-	public void Day2() throws IOException {
+	public void part2() throws IOException {
 		System.out.println("Day1 starting at " + Instant.now().toString());
 		App app = new App();
 		List<Integer> input = app.load("input");
