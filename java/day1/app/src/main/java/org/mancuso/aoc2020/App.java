@@ -3,12 +3,74 @@
  */
 package org.mancuso.aoc2020;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.Instant;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
-    public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
-    }
+public class App {
+
+	public static void main(String[] args) throws IOException {
+		App app = new App();
+		app.Day1();
+		app.Day2();
+	}
+
+	public List<Integer> load(String string) throws IOException {
+		Path path = Path.of(string);
+		try (BufferedReader br = Files.newBufferedReader(path)) {
+			return br.lines().map(x -> Integer.parseInt(x)).collect(Collectors.toList());
+		}
+	}
+
+	int sum(NTuple<Integer> tuple) {
+		int result = 0;
+		for (int i = 0; i < tuple.getSize(); i++) {
+			result = result + tuple.get(i);
+		}
+		return result;
+	}
+
+	int mult(NTuple<Integer> tuple) {
+		int result = 1;
+		for (int i = 0; i < tuple.getSize(); i++) {
+			result = result * tuple.get(i);
+		}
+		return result;
+
+	}
+
+	public NTuple<Integer> find(int r, int target, List<Integer> data) {
+		CombinationBuilder<Integer> cb = new CombinationBuilder<Integer>();
+		Optional<NTuple<Integer>> match = cb.getCombinations(data, r).parallelStream().filter(x -> sum(x) == target)
+				.findFirst();
+		if (match.isPresent()) {
+			return match.get();
+		}
+		return null;
+	}
+
+	public void Day1() throws IOException {
+		System.out.println("Day1 starting at " + Instant.now().toString());
+		App app = new App();
+		List<Integer> input = app.load("input");
+		var match = find(2, 2020, input);
+		System.out.print("\tFound match:\t");
+		match.print(System.out);
+		System.out.println("Result: " + mult(match) + " at " + Instant.now().toString());
+	}
+
+	public void Day2() throws IOException {
+		System.out.println("Day1 starting at " + Instant.now().toString());
+		App app = new App();
+		List<Integer> input = app.load("input");
+		var match = find(3, 2020, input);
+		System.out.print("\tFound match:\t");
+		match.print(System.out);
+		System.out.println("Result: " + mult(match) + " at " + Instant.now().toString());
+	}
 }
