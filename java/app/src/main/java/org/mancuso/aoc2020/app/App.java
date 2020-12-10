@@ -3,19 +3,20 @@
  */
 package org.mancuso.aoc2020.app;
 
-import org.mancuso.aoc2020.AbstractDay;
-import org.mancuso.aoc2020.Day1;
-import org.mancuso.aoc2020.Day2;
+import org.mancuso.aoc2020.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println("Main!");
         List<AbstractDay> days = new ArrayList<>();
         days.add(new Day1());
         days.add(new Day2());
+        days.add(new Day3());
+        days.add(new Day4());
+        days.add(new Day5());
+        days.add(new Day6());
 
         for (AbstractDay day : days) {
             try {

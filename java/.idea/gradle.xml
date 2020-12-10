@@ -14,8 +14,31 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/common" />
+            <option value="$PROJECT_DIR$/day10" />
+            <option value="$PROJECT_DIR$/day11" />
+            <option value="$PROJECT_DIR$/day12" />
+            <option value="$PROJECT_DIR$/day13" />
+            <option value="$PROJECT_DIR$/day14" />
+            <option value="$PROJECT_DIR$/day15" />
+            <option value="$PROJECT_DIR$/day16" />
+            <option value="$PROJECT_DIR$/day17" />
+            <option value="$PROJECT_DIR$/day18" />
+            <option value="$PROJECT_DIR$/day19" />
             <option value="$PROJECT_DIR$/day1_app" />
+            <option value="$PROJECT_DIR$/day20" />
+            <option value="$PROJECT_DIR$/day21" />
+            <option value="$PROJECT_DIR$/day22" />
+            <option value="$PROJECT_DIR$/day23" />
+            <option value="$PROJECT_DIR$/day24" />
+            <option value="$PROJECT_DIR$/day25" />
             <option value="$PROJECT_DIR$/day2_app" />
+            <option value="$PROJECT_DIR$/day3" />
+            <option value="$PROJECT_DIR$/day4" />
+            <option value="$PROJECT_DIR$/day5" />
+            <option value="$PROJECT_DIR$/day6" />
+            <option value="$PROJECT_DIR$/day7" />
+            <option value="$PROJECT_DIR$/day8" />
+            <option value="$PROJECT_DIR$/day9" />
           </set>
         </option>
       </GradleProjectSettings>

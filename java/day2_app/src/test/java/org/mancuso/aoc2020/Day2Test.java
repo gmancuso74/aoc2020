@@ -7,7 +7,15 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class Day2Test {
-    @Test public void testAppHasAGreeting() {
-        Day2 classUnderTest = new Day2();
+    @Test public void testSmall() {
+        Day2 day = new Day2();
+        int result = day.load("small", Day2::day1Validate);
+        assertEquals(2,result);
+    }
+
+    @Test public void testValidate() throws Day2.InvalidRuleException {
+        assertEquals(1,Day2.day1Validate("1-3 a: abcde"));
+        assertEquals(0,Day2.day1Validate("1-3 b: cdefg"));
+        assertEquals(1,Day2.day1Validate("2-9 c: ccccccccc"));
     }
 }

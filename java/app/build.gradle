@@ -10,8 +10,11 @@ dependencies {
     implementation project(':common')
     implementation project(':day1_app')
     implementation project(':day2_app')
+    implementation project(':day3')
+    implementation project(':day4')
+    implementation project(":day5")
+    implementation project(":day6")
 
-    //api project(':name')
 }
 
 application {

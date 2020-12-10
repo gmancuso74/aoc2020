@@ -8,6 +8,30 @@
  */
 
 rootProject.name = 'aoc2020'
-include('common','day1_app','day2_app','app')
-
-
+include('common')
+include('day1_app')
+include('day2_app')
+include('day3')
+include('day4')
+include('day5')
+include('day6')
+include('day7')
+include('day8')
+include('day9')
+include('day10')
+include('day11')
+include('day12')
+include('day13')
+include('day14')
+include('day15')
+include('day16')
+include('day17')
+include('day18')
+include('day19')
+include('day20')
+include('day21')
+include('day22')
+include('day23')
+include('day24')
+include('day25')
+include('app')
