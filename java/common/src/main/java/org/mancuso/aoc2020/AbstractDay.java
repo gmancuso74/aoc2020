@@ -16,7 +16,7 @@ public abstract class AbstractDay {
 
     public abstract String part2();
 
-    public void print(String message) {
+    public void println(String message) {
         if (verbose) {
             System.out.println(message);
         }

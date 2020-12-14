@@ -74,9 +74,15 @@ public class Day7Test {
         Map<String, List<Day7.Content>> rules = day.parseRulesForContainment(lines);
     }
 
+
     @Test
     public void testSmallPart2() throws IOException {
-        Path p = Paths.get("small");
+        Path p = Paths.get("small2");
+        List<String> lines = Files.readAllLines(p);
+//        day.verbose=true;
+        Map<String, List<Day7.Content>> rules = day.parseRulesForContainment(lines);
+        assertEquals(7, rules.size());
+        assertEquals(126,day.countBags("shiny gold",rules));
     }
 
 }
