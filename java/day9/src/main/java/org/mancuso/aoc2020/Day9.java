@@ -19,6 +19,8 @@ public class Day9 extends AbstractDay {
         String result=null;
         try {
             List<String> lines = Files.readAllLines(p);
+            long outlier=findOutlier(lines,25);
+            result=String.valueOf(outlier);
         } catch(Exception ex){
             ex.printStackTrace();
         }
@@ -37,20 +39,30 @@ public class Day9 extends AbstractDay {
         return result;
     }
 
-    boolean isValid(Integer value,LinkedList<Integer> buffer) {
-        return false;
+    boolean isValid(Long value,LinkedList<Long> buffer) {
+        CombinationBuilder<Long> cBuilder = new CombinationBuilder<>();
+        List<NTuple<Long>> combos = cBuilder.getCombinations(buffer,2);
+        return combos.stream().anyMatch(x->value==x.get(0)+x.get(1));
     }
 
-    public int findOutlier(List<String> lines, int preambleSize) {
-        LinkedList<Integer> buffer = new LinkedList<>();
-        List<Integer> input = lines.stream().map(x->Integer.parseInt(x)).collect(Collectors.toList());
+    public Long findOutlier(List<String> lines, int preambleSize) {
+        LinkedList<Long> buffer = new LinkedList<>();
+        List<Long> input = lines.stream().map(x->Long.parseLong(x)).collect(Collectors.toList());
         for(int i=0;i<preambleSize;i++) {
             buffer.add(input.get(i));
         }
+        Long outlier=null;
         int idx=preambleSize;
-        while(isValid(input.get(idx),buffer)) {
-
+        while(idx<input.size()) {
+            Long value=input.get(idx++);
+            if(!isValid(value,buffer)) {
+                outlier=value;
+                return outlier;
+            } else {
+                buffer.removeFirst();
+                buffer.add(value);
+            }
         }
-        return 0;
+        return null;
     }
 }
