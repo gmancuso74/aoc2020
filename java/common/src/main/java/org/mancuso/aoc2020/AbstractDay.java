@@ -42,13 +42,13 @@ public abstract class AbstractDay {
     public String report() {
         String result = name() + ":\t";
         if (part1Result != null) {
-            result += "Part1 [" + part1Duration.toString() + "]:\t" + part1Result;
+            result += "Part1 [" + part1Duration.toMillis() + "ms]:\t" + part1Result;
         } else {
             result += "Part1 not run";
         }
         result += "\t";
         if (part2Result != null) {
-            result += "Part2 [" + part2Duration.toString() + "]:\t" + part2Result;
+            result += "Part2 [" + part2Duration.toMillis() + "ms]:\t" + part2Result;
         } else {
             result += "Part2 not run";
         }
