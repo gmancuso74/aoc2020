@@ -11,20 +11,26 @@ import java.util.List;
 public class App {
     public static void main(String[] args) {
         List<AbstractDay> days = new ArrayList<>();
-        days.add(new Day1());
-        days.add(new Day2());
-        days.add(new Day3());
-        days.add(new Day4());
-        days.add(new Day5());
-        days.add(new Day6());
-        days.add(new Day7());
-        days.add(new Day8());
-        days.add(new Day9());
+        String pkgName = "org.mancuso.aoc2020.";
+        for (int i = 1; i < 25; i++) {
+            String shortName = "Day" + i;
+            String dayName = pkgName + shortName;
+            try {
+                Class<? extends AbstractDay> clazz = (Class<? extends AbstractDay>) Class.forName(dayName);
+                var constructor = clazz.getConstructor();
+                days.add(constructor.newInstance());
+            } catch (ClassNotFoundException ex) {
+                System.out.println(shortName + " not implemented");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+
         for (AbstractDay day : days) {
             try {
                 day.run();
-            } catch(Throwable ex) {
-                System.out.println("Exception on day " + day.name()+": " +  ex.getMessage());
+            } catch (Throwable ex) {
+                System.out.println("Exception on day " + day.name() + ": " + ex.getMessage());
             }
         }
         for (AbstractDay day : days) {
