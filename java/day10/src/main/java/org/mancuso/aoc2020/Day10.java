@@ -3,6 +3,7 @@ package org.mancuso.aoc2020;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,80 @@ public class Day10 extends AbstractDay {
         }
         apply(deltaCounts, 3);//the device is always 3 more than max
         return deltaCounts;
+    }
+
+    public void printDeltas(List<Long> input) {
+        Long lastJoltage = 0L;
+        int consecutive1s=0;
+        int lastDelta=0;
+        for (int i=0;i<input.size();i++) {
+            Long curJoltage=input.get(i);
+            int delta = (int) (curJoltage - lastJoltage);
+            if(delta==3&&lastDelta==1) {
+                printf("[%d]",consecutive1s);
+            }
+            if(delta!=lastDelta){
+                println("");
+            }
+            lastDelta=delta;
+            printf("%d ",delta);
+            if(delta==3) {
+                consecutive1s=0;
+            } else {
+                consecutive1s++;
+            }
+            lastJoltage = curJoltage;
+        }
+    }
+
+    public int calcPathsFrom1s(int consecutive1s){
+        System.out.println(consecutive1s);
+        switch (consecutive1s) {
+            case 5:
+                return 13;
+            case 4:
+                return 6;
+            case 3:
+                return 3;
+            case 2:
+                return 2;
+            case 1:
+                return 1;
+            default:
+                throw new RuntimeException("Un-calculated case: "+consecutive1s);
+        }
+    }
+
+    public long countPaths(List<Long> input) {
+        List<Integer> paths = new ArrayList<>();
+        Long lastJoltage = 0L;
+        int consecutive1s=0;
+        int lastDelta=0;
+        for (int i=0;i<input.size();i++) {
+            Long curJoltage=input.get(i);
+            int delta = (int) (curJoltage - lastJoltage);
+            if(delta==3&&lastDelta==1) {
+                printf("[%d]",consecutive1s);
+                paths.add(calcPathsFrom1s(consecutive1s));
+            }
+            if(delta!=lastDelta){
+                println("");
+            }
+            lastDelta=delta;
+            printf("%d ",delta);
+            if(delta==3) {
+                consecutive1s=0;
+            } else {
+                consecutive1s++;
+            }
+            lastJoltage = curJoltage;
+        }
+        long result=1L;
+        for(int i=0;i<paths.size();i++){
+            result=result*paths.get(i);
+            if(result<1) throw new RuntimeException(("Overflow; larger datatype needed"));
+        }
+        return result;
     }
 
     public void apply(Map<Integer, Integer> deltaCounts, int delta) {
