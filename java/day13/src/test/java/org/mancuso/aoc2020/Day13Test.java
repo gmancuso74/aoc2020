@@ -12,6 +12,7 @@ import static org.junit.Assert.assertTrue;
 
 public class Day13Test {
 
+    public static final int part2SmallAnswer = 1068781;
     Day13 day = new Day13();
 
     @Test
@@ -23,19 +24,6 @@ public class Day13Test {
         day.doPart1();
         assertEquals(944, day.departureTime);
         assertEquals(59, day.departingBus.intValue());
-    }
-
-    public long gcd(long x,long  y) {
-        if (y == 0) return x;
-        return gcd(y, x % y);
-    }
-
-    public long gcd(long... numbers){
-        long result=0;
-        for (long num : numbers) {
-            result=gcd(result,num);
-        }
-        return result;
     }
 
     @Test
@@ -52,8 +40,7 @@ public class Day13Test {
         List<String> lines = Files.readAllLines(p);
         assertEquals(2, lines.size());
         day.Initialize(lines);
-        assertTrue(day.validate(1068781, day.busRecs));
-        day.doPart2();
-        assertEquals(1068781, day.departureTime);
+        assertTrue(day.validate(part2SmallAnswer, day.busRecs));
+        assertEquals(part2SmallAnswer, day.departureTime);
     }
 }

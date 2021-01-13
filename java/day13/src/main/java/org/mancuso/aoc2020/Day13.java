@@ -52,12 +52,26 @@ public class Day13 extends AbstractDay {
     }
 
     public void doPart2() {
-        for (long Tn = 0; Tn < Long.MAX_VALUE; Tn++) {
-            if (validate(Tn, busRecs)) {
-                departureTime = Tn;
+        // this doesn't complete fast enough -- need to determine a more efficient approach
+        // perhaps only check multiples of of the product of (bus numbers plus offset)
+//        for (long Tn = 0; Tn < Long.MAX_VALUE; Tn++) {
+//            if (validate(Tn, busRecs)) {
+//                departureTime = Tn;
+//                break;
+//            }
+//            if (verbose && (Tn % 100000 == 0)) System.out.println("Checkpoint: " + Tn);
+//        }
+        long product=1l;
+        for(int i=0;i<busRecs.size();i++) {
+            BusRec rec = busRecs.get(i);
+           product= product*(rec.busId+rec.offset);
+        }
+        for(long i=0;i<Long.MAX_VALUE;i++) {
+            if(validate(i*product,busRecs)) {
+                departureTime=i*product;
                 break;
             }
-            if (verbose && (Tn % 100000 == 0)) System.out.println("Checkpoint: " + Tn);
+            if (verbose && (i % 100000 == 0)) System.out.println("Checkpoint: " + i);
         }
     }
 
