@@ -100,16 +100,16 @@ public class Day13 extends AbstractDay {
     public String part2() {
         Path p = Paths.get("day13/input");
         String result = null;
-        try {
-            List<String> lines = Files.readAllLines(p);
-            Initialize(lines);
-            verbose=true;
-            doPart2();
-            result = Long.toString(departureTime);
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            return null;
-        }
+//        try {
+//            List<String> lines = Files.readAllLines(p);
+//            Initialize(lines);
+//            verbose=true;
+//            doPart2();
+//            result = Long.toString(departureTime);
+//        } catch (Exception ex) {
+//            ex.printStackTrace();
+//            return null;
+//        }
         return result;
     }
 }

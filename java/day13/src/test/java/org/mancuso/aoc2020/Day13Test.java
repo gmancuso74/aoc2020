@@ -43,4 +43,5 @@ public class Day13Test {
         assertTrue(day.validate(part2SmallAnswer, day.busRecs));
         assertEquals(part2SmallAnswer, day.departureTime);
     }
+
 }

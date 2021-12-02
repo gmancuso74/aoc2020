@@ -2,6 +2,7 @@ package org.mancuso.aoc2020;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.BitSet;
 
 public abstract class AbstractDay {
     public boolean verbose = false;
@@ -54,4 +55,5 @@ public abstract class AbstractDay {
         }
         return result;
     }
+
 }
